@@ -1,5 +1,5 @@
-import { useFetch } from '@/hooks/useFetch'
-import { usersService } from './users.service'
+import { useFetch } from "@/hooks/useFetch"
+import { usersService } from "./users.service";
 
 export default function UsersPage() {
   const { data: users, loading } = useFetch(usersService.getAll)

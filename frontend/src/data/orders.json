@@ -1,0 +1,22 @@
+[
+  {
+    "id": 101,
+    "status": "pending",
+    "total": 250
+  },
+  {
+    "id": 102,
+    "status": "completed",
+    "total": 1200
+  },
+  {
+    "id": 103,
+    "status": "cancelled",
+    "total": 430
+  },
+  {
+    "id": 104,
+    "status": "completed",
+    "total": 760
+  }
+]

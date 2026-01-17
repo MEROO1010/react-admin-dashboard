@@ -1,4 +1,4 @@
-import { Card } from '@/components/ui/Card'
+import {Card} from "@/components/layout/ui/Card"
 
 export default function StatsCards() {
   return (
