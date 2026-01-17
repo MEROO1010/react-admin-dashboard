@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Layout from '@/components/layout/Layout'
 import DashboardPage from '@/features/dashboard/DashboardPage'
-import UsersPage from '@/features/dashboard/users/UserPage'
+import UsersPage from '@/features/dashboard/users/UsersPage'
 import  OrdersPage from "@/orders/OrdersPage"
 
 
