@@ -3,10 +3,10 @@ import { useFetch } from "@/hooks/useFetch"
 import { usersService } from "./users.service"
 import { User } from "@/types/user"
 import UserForm from "./UserForm"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/layout/ui/Button"
 
 export default function UsersPage() {
-  const { data, loading, refetch } = useFetch<User[]>(usersService.getAll)
+  const { data, loading, } = useFetch<User[]>(usersService.getAll)
   const [users, setUsers] = useState<User[]>([])
 
   // sync local state once data loads
