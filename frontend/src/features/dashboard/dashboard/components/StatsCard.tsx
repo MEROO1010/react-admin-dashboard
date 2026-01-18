@@ -1,11 +1,21 @@
-import {Card} from "@/components/layout/ui/Card"
+import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts"
+
+const data = [
+  { name: "Users", value: 120 },
+  { name: "Orders", value: 80 },
+  { name: "Revenue", value: 2300 }
+]
 
 export default function StatsCards() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <Card>Users: 120</Card>
-      <Card>Orders: 87</Card>
-      <Card>Revenue: $12,400</Card>
+    <div className="bg-white p-4 rounded shadow h-64">
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart data={data}>
+          <XAxis dataKey="name" />
+          <Tooltip />
+          <Bar dataKey="value" />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   )
 }

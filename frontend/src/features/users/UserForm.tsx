@@ -1,38 +1,52 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/layout/ui/Button"
+import { User } from "@/types/user"
 
 interface Props {
-  onSubmit: (data: { name: string; email: string }) => void
+  onSubmit: (data: any) => void
+  initialData?: User | null
 }
 
-export default function UserForm({ onSubmit }: Props) {
+export default function UserForm({ onSubmit, initialData }: Props) {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
+
+  useEffect(() => {
+    if (initialData) {
+      setName(initialData.name)
+      setEmail(initialData.email)
+    }
+  }, [initialData])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!name || !email) return
 
-    onSubmit({ name, email })
+    onSubmit(
+      initialData
+        ? { ...initialData, name, email }
+        : { name, email }
+    )
+
     setName("")
     setEmail("")
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 mb-4">
+    <form onSubmit={handleSubmit} className="flex gap-3">
       <input
-        className="border px-2 py-1 rounded w-40"
+        className="border px-3 py-2 rounded w-40 dark:bg-gray-800"
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
       <input
-        className="border px-2 py-1 rounded w-48"
+        className="border px-3 py-2 rounded w-56 dark:bg-gray-800"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <Button type="submit">Add</Button>
+      <Button>{initialData ? "Update" : "Add"}</Button>
     </form>
   )
 }
