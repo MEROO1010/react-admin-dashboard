@@ -1,6 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom"
+import { useTheme } from "@/hooks/useTheme"
+
+
 
 export default function Layout() {
+  
+
+  const { theme , toggle } = useTheme()
   return (
     <div className="min-h-screen flex">
       {/* Sidebar */}
