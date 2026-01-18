@@ -1,17 +1,29 @@
-import { Outlet } from "react-router-dom"
-import Sidebar from "./Sidebar"
-import Header from "./Header"
+import { NavLink, Outlet } from "react-router-dom"
 
 export default function Layout() {
   return (
-    <div className="flex min-h-screen">
-      <Sidebar />
-      <div className="flex-1">
-        <Header />
-        <main className="p-4">
-          <Outlet />
-        </main>
-      </div>
+    <div className="min-h-screen flex">
+      {/* Sidebar */}
+      <aside className="w-64 bg-gray-900 text-white p-4 space-y-4">
+        <h2 className="text-xl font-bold">Admin</h2>
+
+        <nav className="flex flex-col gap-2">
+          <NavLink to="/" className="hover:text-blue-400">
+            Dashboard
+          </NavLink>
+          <NavLink to="/users" className="hover:text-blue-400">
+            Users
+          </NavLink>
+          <NavLink to="/orders" className="hover:text-blue-400">
+            Orders
+          </NavLink>
+        </nav>
+      </aside>
+
+      {/* Content */}
+      <main className="flex-1 bg-gray-100 p-6">
+        <Outlet />
+      </main>
     </div>
   )
 }

@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom"
 import Layout from "../components/layout/Layout"
 import DashboardPage from "../features/dashboard/DashboardPage"
-import UsersPage from "../features/users/UsersPage"
-import OrdersPage from "../orders/OrdersPage"
+import UsersPage from "@/features/users/UsersPage"
+
 
 export const router = createBrowserRouter([
   {
@@ -10,8 +10,8 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <DashboardPage /> },
-      { path: "users", element: <UsersPage /> },
-      { path: "orders", element: <OrdersPage /> }
+      { path: "users", element: <UsersPage /> }
     ]
   }
 ])
+

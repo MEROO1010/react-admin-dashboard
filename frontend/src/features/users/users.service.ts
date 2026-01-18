@@ -5,20 +5,20 @@ let users: User[] = [...usersData]
 
 export const usersService = {
   getAll: async (): Promise<User[]> => {
-    return new Promise((resolve) =>
-      setTimeout(() => resolve(users), 300)
-    )
+    return new Promise((res) => setTimeout(() => res(users), 300))
   },
 
-  create: async (user: Omit<User, "id">): Promise<User> => {
-    const newUser: User = { id: Date.now(), ...user }
+  create: async (data: Omit<User, "id">): Promise<User> => {
+    const newUser: User = {
+      id: Date.now(),
+      ...data
+    }
     users.push(newUser)
     return newUser
   },
 
-  update: async (user: User): Promise<User> => {
+  update: async (user: User): Promise<void> => {
     users = users.map((u) => (u.id === user.id ? user : u))
-    return user
   },
 
   delete: async (id: number): Promise<void> => {

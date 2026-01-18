@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useFetch } from "@/hooks/useFetch"
 import { ordersService } from "./orders.service"
 import { Order } from "@/types/order"
-import { Table, THead, TBody, TR, TH, TD } from "@/components/layout/ui/Table"
+import { Table, THead, TBody, TR, TH, TD } from "@/components/ui/Table"
 
 export default function OrdersPage() {
   const { data } = useFetch<Order[]>(ordersService.getAll)

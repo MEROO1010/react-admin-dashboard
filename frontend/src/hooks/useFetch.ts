@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 
-export function useFetch<T>(fetcher: () => Promise<T>) {
+export function useFetch<T>(fn: () => Promise<T>) {
   const [data, setData] = useState<T | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetcher().then(res => {
+    fn().then((res) => {
       setData(res)
       setLoading(false)
     })
-  }, [fetcher])
+  }, [])
 
   return { data, loading }
 }

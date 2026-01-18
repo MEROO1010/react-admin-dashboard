@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { Button } from "@/components/layout/ui/Button"
 import { User } from "@/types/user"
+import { Button } from "@/components/ui/Button"
 
 interface Props {
-  onSubmit: (data: any) => void
+  onSubmit: (user: any) => void
   initialData?: User | null
 }
 
@@ -20,14 +20,11 @@ export default function UserForm({ onSubmit, initialData }: Props) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (!name || !email) return
-
     onSubmit(
       initialData
         ? { ...initialData, name, email }
         : { name, email }
     )
-
     setName("")
     setEmail("")
   }
@@ -35,16 +32,18 @@ export default function UserForm({ onSubmit, initialData }: Props) {
   return (
     <form onSubmit={handleSubmit} className="flex gap-3">
       <input
-        className="border px-3 py-2 rounded w-40 dark:bg-gray-800"
+        className="border px-3 py-1 rounded"
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        required
       />
       <input
-        className="border px-3 py-2 rounded w-56 dark:bg-gray-800"
+        className="border px-3 py-1 rounded"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        required
       />
       <Button>{initialData ? "Update" : "Add"}</Button>
     </form>
