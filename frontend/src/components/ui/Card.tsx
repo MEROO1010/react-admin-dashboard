@@ -1,8 +1,20 @@
-import { ReactNode } from 'react'
+import { ReactNode } from "react"
+import clsx from "clsx"
 
-export function Card({ children }: { children: ReactNode }) {
+export function Card({
+  children,
+  className
+}: {
+  children: ReactNode
+  className?: string
+}) {
   return (
-    <div className="rounded-lg bg-white dark:bg-gray-800 p-4 shadow">
+    <div
+      className={clsx(
+        "bg-white rounded-xl shadow-sm border border-slate-200 p-6",
+        className
+      )}
+    >
       {children}
     </div>
   )

@@ -1,8 +1,10 @@
 import { ButtonHTMLAttributes } from "react"
 import clsx from "clsx"
 
+type Variant = "primary" | "secondary" | "danger"
+
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "danger"
+  variant?: Variant
 }
 
 export function Button({
@@ -10,18 +12,19 @@ export function Button({
   className,
   ...props
 }: Props) {
-  const styles = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700",
-    secondary: "bg-gray-200 hover:bg-gray-300",
-    danger: "bg-red-600 text-white hover:bg-red-700"
-  }
-
   return (
     <button
       {...props}
       className={clsx(
-        "px-3 py-1 rounded text-sm",
-        styles[variant],
+        "px-4 py-2 rounded-lg text-sm font-medium transition active:scale-95",
+        {
+          primary:
+            "bg-indigo-600 text-white hover:bg-indigo-700",
+          secondary:
+            "bg-slate-100 text-slate-700 hover:bg-slate-200",
+          danger:
+            "bg-red-600 text-white hover:bg-red-700"
+        }[variant],
         className
       )}
     />
